@@ -1,4 +1,1 @@
-print("hello")
-
-
-print("hi")
+import sys, math, time
