@@ -5,7 +5,7 @@ from gpiozero import Servo
 from gpiozero import Motor
 from gpiozero import PWMLED
 
-#Create instances of the sensor, LED, servo, and motor with corresponding PIN numbers
+#Create instances of the sensor, LED, servo, and motor with corresponding PIN
 emg = MuscleSensor (0)
 led_object = LED(5)
 servo = Servo (8)
