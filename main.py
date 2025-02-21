@@ -161,8 +161,8 @@ def main():
 
         return avg
 '''
-
-
+#Main function call
+main()
 
 
 
