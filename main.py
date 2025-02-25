@@ -71,10 +71,11 @@ def dc_motor (avg_emg):
     if 65<=avg_emg<=72: #First time the emg value is in resting position range
          t_start = time.time() #Start the timer
 
-        if time.time() - t_start >= threshold_t: #Check if the time passed surpassed threshold time
-            motor.forward()
-            time.sleep(5) #Change the time depending on how much it needs to be pushed back and time motor moves
-            motor.stop()
+    if time.time() - t_start >= threshold_t: #Check if the time passed surpassed threshold time
+        motor.forward(speed=0.113)
+        time.sleep(3.84) #Change the time depending on how much it needs to be pushed back and time motor moves
+        motor.stop()
+        t_start = 0
 
     #else: #Do not start the timer if not in range of resting value
        # t_start = No
