@@ -90,20 +90,19 @@ def led_light (avg_emg):
 
 
         elif 65<=avg_emg<=72: #Resting Position, keep the light dim and flash slowly
-            led_object.value(0.2)
+            led_object.on()
             time.sleep(2)
             led_object.off()
 
 
         elif 72<=avg_emg<=85: #Weak Position
-            led_object.value (0.4)
+            led_object.on()
             time.sleep(0.8)
             led_object.off()
 
 
 
         elif 85<avg_emg<=100: #Intermediate Position
-            led_object.value(0.6)
             led_object.on()
             time.sleep(0.6)
             led_object.off()
@@ -111,7 +110,7 @@ def led_light (avg_emg):
 
 
         elif 100<avg_emg<=120: #Strong Position, increased brightness and fast flashing
-            led_object.value (0.8)
+            led_object.on()
             time.sleep(0.4)
             led_object.off()
 
