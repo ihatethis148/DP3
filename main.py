@@ -12,8 +12,8 @@ servo = Servo (8)
 motor = Motor(forward = 12, backward= 16)
 
 #Tracking variables for time to ensure user is in resting position for certain time before activating motor
-t_start = None
-t_end = None
+obj = time.gmtime(0)
+epoch = time.asctime(obj)
 threshold_t = 5
 
 
@@ -69,18 +69,15 @@ def dc_motor (avg_emg):
 
     #Check if avg_emg is in resting position for more than 5 seconds
     if 65<=avg_emg<=72: #First time the emg value is in resting position range
-        if t_start == None:
-            t_start = time.time() #Start the timer
+         t_start = time.time() #Start the timer
 
-        elif time.time() - t_start >= threshold_t: #Check if the time passed surpassed threshold time
+        if time.time() - t_start >= threshold_t: #Check if the time passed surpassed threshold time
             motor.forward()
             time.sleep(5) #Change the time depending on how much it needs to be pushed back and time motor moves
             motor.stop()
-            t_start = None #Reset the timer once motor spins everything back in position
 
-
-    else: #Do not start the timer if not in range of resting value
-        t_start = None
+    #else: #Do not start the timer if not in range of resting value
+       # t_start = No
 
 
 #Define a function that accepts the average EMG value as an argument and changes flashing speed and brightness
@@ -138,7 +135,7 @@ def main():
                 led_light(rolling_avg)
                 dc_motor(rolling_avg)
 
-                if
+
 
         except KeyboardInterrupt:
             led_object.off()
