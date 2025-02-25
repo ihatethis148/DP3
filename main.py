@@ -137,8 +137,8 @@ def main():
                 led_light(rolling_avg)
                 dc_motor(rolling_avg)
 
-
-
+            else:
+                continue
         except KeyboardInterrupt:
             led_object.off()
             motor.stop()
