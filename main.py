@@ -71,6 +71,7 @@ def dc_motor (avg_emg):
     if 65<=avg_emg<=72: #First time the emg value is in resting position range
          t_start = time.time() #Start the timer
 
+
     if time.time() - t_start >= threshold_t: #Check if the time passed surpassed threshold time
         motor.forward(speed=0.113)
         time.sleep(3.84) #Change the time depending on how much it needs to be pushed back and time motor moves
@@ -121,7 +122,7 @@ def led_light (avg_emg):
 
 def main():
 
-    print ("Electrical Potential Difference (Raw)", "/t", "Electric Potential Difference (Avg)", "/t", "LED Brightness", "D.C Motor", "/t","Servo Positioning")
+    print ("Electrical Potential Difference (Raw)", "\t", "Electric Potential Difference (Avg)", "\t", "LED Brightness", "D.C Motor", "\t","Servo Positioning")
 
 
     all_emg_values = []
