@@ -67,14 +67,14 @@ def dc_motor (avg_emg):
 
     global t_start #Declare t_start as a global variable
 
-    #Check if avg_emg is in resting position
+    #Check if avg_emg is in resting position for more than 5 seconds
     if 65<=avg_emg<=72: #First time the emg value is in resting position range
         if t_start == None:
             t_start = time.time() #Start the timer
 
         elif time.time() - t_start >= threshold_t: #Check if the time passed surpassed threshold time
             motor.forward()
-            time.sleep(5) #Change the time depending on how much it needs to be pushed back
+            time.sleep(5) #Change the time depending on how much it needs to be pushed back and time motor moves
             motor.stop()
             t_start = None #Reset the timer once motor spins everything back in position
 
@@ -123,6 +123,9 @@ def led_light (avg_emg):
 
 def main():
 
+    print ("Electrical Potential Difference (Raw)", "/t", "Electric Potential Difference (Avg)", "/t", "LED Brightness", "D.C Motor", "/t","Servo Positioning")
+
+
     all_emg_values = []
 
     while True:
@@ -134,6 +137,8 @@ def main():
                 servo_motor(rolling_avg)
                 led_light(rolling_avg)
                 dc_motor(rolling_avg)
+
+                if
 
         except KeyboardInterrupt:
             led_object.off()
