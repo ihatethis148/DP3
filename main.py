@@ -33,7 +33,6 @@ def get_rolling_avg (values_list):
 
     #If the list is not full, output the average as None
     elif len(values_list) <10:
-        avg = None
         return None
 
 
