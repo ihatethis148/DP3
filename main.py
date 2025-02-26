@@ -22,7 +22,7 @@ start_time = None
 #Define a function to get the emg value
 def get_emg_value ():
     return emg.muscle_raw()
-
++
 #Define a function that accepts emg values and adds them to a list
 def get_rolling_avg (values_list):
     #If the length of the list == 10, calculate the average and remove the first element to update the list
@@ -128,8 +128,7 @@ def led_light (avg_emg):
 
 def main():
 
-    print ("Electrical Potential Difference (Raw)", "\t", "Electric Potential Difference (Avg)", "\t", "LED Brightness", "D.C Motor", "\t","Servo Positioning")
-
+    print ("Electrical Potential Difference (Raw)", "\t", "Electric Potential Difference (Avg)", "\t", "LED Brightness", "\t", "D.C Motor", "\t","Servo Positioning")
 
     all_emg_values = []
     start_time = None
@@ -139,8 +138,33 @@ def main():
             raw_emg_value = get_emg_value()
             all_emg_values.append(raw_emg_value)
             rolling_avg = get_rolling_avg(all_emg_values)
-            print(rolling_avg)
-            print(raw_emg_value)
+
+            if rolling_avg is not None:
+                if rolling_avg < 65:
+                    servo_position = "1"
+                    motor_state = "Off"
+                    led_state = "Off"
+                elif 65 <= rolling_avg <= 72:
+                    servo_position = "1"
+                    motor_state = "Off"
+                    led_state = "Slow Flash"
+                elif 72 < rolling_avg <= 85:
+                    servo_position = "0.7"
+                    motor_state = "Off"
+                    led_state = "Medium Flash"
+                elif 85 < rolling_avg <= 100:
+                    servo_position = "0.4"
+                    motor_state = "Off"
+                    led_state = "Faster Flash"
+                elif 100 < rolling_avg <= 120:
+                    servo_position = "0.1"
+                    motor_state = "Rotating"
+                    led_state = "Fast Flash"
+                else:  # avg_emg > 120
+                    servo_position = "0"
+                    motor_state = "Rotating"
+                    led_state = "Max Flash"
+                print(raw_emg_value, "t", rolling_avg, "t",led_state,  "t",motor_state,  "t",servo_position)
 
             if rolling_avg != None:
                 servo_motor(rolling_avg)
