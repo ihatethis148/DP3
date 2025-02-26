@@ -24,8 +24,7 @@ def get_emg_value ():
     return emg.muscle_raw()
 
 #Define a function that accepts emg values and adds them to a list
-def get_rolling_avg (emg_value, values_list):
-    values_list.append(emg_value)
+def get_rolling_avg (values_list):
     #If the length of the list == 10, calculate the average and remove the first element to update the list
     if len(values_list) == 11:
         avg = round(sum(values_list) / 10 ,2)
