@@ -22,7 +22,7 @@ start_time = None
 #Define a function to get the emg value
 def get_emg_value ():
     return emg.muscle_raw()
-+
+
 #Define a function that accepts emg values and adds them to a list
 def get_rolling_avg (values_list):
     #If the length of the list == 10, calculate the average and remove the first element to update the list
@@ -164,7 +164,7 @@ def main():
                     servo_position = "0"
                     motor_state = "Rotating"
                     led_state = "Max Flash"
-                print(raw_emg_value, "t", rolling_avg, "t",led_state,  "t",motor_state,  "t",servo_position)
+                print(raw_emg_value, "\t", rolling_avg, "\t",led_state,  "\t",motor_state,  "\t",servo_position)
 
             if rolling_avg != None:
                 servo_motor(rolling_avg)
