@@ -76,7 +76,7 @@ def dc_motor (avg_emg):
     if start_time != None:
         while time.time() - start_time >= threshold_t:
             print ("Moving")
-            motor.forward (speed = 0.115)
+            motor.forward (speed = 0.13)
             time.sleep(3.84)
             motor.stop()
             start_time = None
