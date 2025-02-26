@@ -155,7 +155,7 @@ def main():
         except KeyboardInterrupt:
             led_object.off()
             motor.stop()
-            servo.value = 0
+            servo.value = 1
             sys.exit(0)
 
 #Main function call
